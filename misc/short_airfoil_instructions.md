@@ -27,11 +27,11 @@ Now you’ll have about 45 .msh files in /home/fenics/shared/murtazo/cloudnaca/m
 Change to this folder:  /home/fenics/shared/murtazo/cloudnaca/msh#  
 
 
-## Convert .msh files into .xml like this:
+### Convert .msh files into .xml like this:
 root@b202197d982e:/home/fenics/shared/murtazo/cloudnaca/msh#    dolfin-convert r2a15n200.msh r2a15n200.xml   
 
 
-## Go to folder: /home/fenics/shared/murtazo/navier_stokes_solver and  run  airfoil on the new xml file you just created
+### Go to folder: /home/fenics/shared/murtazo/navier_stokes_solver and  run  airfoil on the new xml file you just created
 
 
 root@b202197d982e:/home/fenics/shared/murtazo//navier_stokes_solver#  ./airfoil  10 0.0001 10. 1 ../cloudnaca/msh/r2a15n200.xml
