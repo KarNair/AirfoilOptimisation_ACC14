@@ -8,9 +8,10 @@ resource "openstack_compute_instance_v2" "test" {
   flavor_name     = "ssc.small"
   key_pair        = "${openstack_compute_keypair_v2.my-cloud-key.name}"
   security_groups = ["default"]
+  user_data       = "${file("master.conf")}"
 
   network {
-    name = "SNIC 2019/10-32 Internal IPv4 Network"
+    name = "SNIC 2019/10-13 Internal IPv4 Network"
   }
 }
 resource "openstack_compute_instance_v2" "nfs" {
@@ -21,7 +22,7 @@ resource "openstack_compute_instance_v2" "nfs" {
   security_groups = ["default"]
 
   network {
-    name = "SNIC 2019/10-32 Internal IPv4 Network"
+    name = "SNIC 2019/10-13 Internal IPv4 Network"
   }
 }
 resource "openstack_compute_instance_v2" "wrkr" {
@@ -33,6 +34,6 @@ resource "openstack_compute_instance_v2" "wrkr" {
   count		  = 3
 
   network {
-    name = "SNIC 2019/10-32 Internal IPv4 Network"
+    name = "SNIC 2019/10-13 Internal IPv4 Network"
   }
 }
