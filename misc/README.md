@@ -4,11 +4,11 @@ VM connection details to launch the project cluster,
 
 Primary Project VM:
 -------------------
-Name: group14_proj_new
+Name: gr14_new
 
-Private IP: 192.168.1.44
+Private IP: 192.168.1.53
 
-Floating IPs: 130.238.29.75
+Floating IPs: 130.238.28.73
 
 Key Pair: group14.pem
 
