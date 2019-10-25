@@ -13,7 +13,7 @@ scalability of your solution.
 
 # Input
 
-API Interface Request for Users to send the different input parameters.
+API Interface Request from Users to send the different input parameters.
 
 # Ouput
 
