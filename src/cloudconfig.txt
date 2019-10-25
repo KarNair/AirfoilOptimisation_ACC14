@@ -7,6 +7,7 @@ packages:
  - python3-pip
  - python3-dev
  - build-essential
+ - rabbitmq-server
 
 byobu_default: system 
 
@@ -14,6 +15,7 @@ runcmd:
  - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
  - source /home/ubuntu/.bashrc
  - pip3 install numpy
+ - pip3 install "celery[librabbitmq]"
  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
  - sudo apt-get update -
