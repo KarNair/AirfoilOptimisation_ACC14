@@ -1,26 +1,32 @@
-
 #cloud-config
 
 apt_update: true
 apt_upgrade: true
+
 packages:
  - python3-pip
  - python3-dev
  - build-essential
- - rabbitmq-server
 
 byobu_default: system 
 
 runcmd:
- - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
- - source /home/ubuntu/.bashrc
- - pip3 install numpy
  - pip3 install flask
- - pip3 install "celery[librabbitmq]"
- - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+ - pip3 install celery
+ - sudo apt install -y rabbitmq-server
+ - sudo rabbitmqctl add_user acc14 accg14
+ - sudo rabbitmqctl add_vhost g14host
+ - sudo rabbitmqctl set_permissions -p g14host acc14 ".*" ".*" ".*"
+ - sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
- - sudo apt-get update -
- - apt-cache policy docker-ce -
+ - sudo apt-cache policy docker-ce
  - sudo apt-get install -y docker-ce
- - docker run -td -v $(pwd):/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:current
- - git clone https://github.com/KarNair/AirfoilOptimisation_ACC14.git
+ - sudo docker run -td -v $(pwd):/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:current
+ - git clone https://github.com/KarNair/AirfoilOptimisation_ACC14.git  
+ - cd AirfoilOptimisation_ACC14/src/python
+ - sudo service rabbitmq-server stop 
+ - sudo service rabbitmq-server start 
+ - screen celery -A airfoil_tasks worker --loglevel=info &
+ - python3 flask_airfoil_tasks.py
+# - curl -i http://localhost:5000/airfoil/api/base
+# - curl -i http://130.238.xx.xx:5000/airfoil/api/base?input=1,1,1,1

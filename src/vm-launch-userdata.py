@@ -1,4 +1,5 @@
 ## Python Launch VM script using user_data
+## Sample Command Line: python3 vm-launch-userdata.py 'master.conf'[cloud_init_file] 'SNIC 2019/10-13 Internal IPv4 Network'[Cluster_Network] 'g4master'[instance_name] 'Ubuntu 18.04 LTS (Bionic Beaver) - latest' [image_name] 'accgrp14'[key_name] 'ssc.small'[flavor_name]
 import time, os, sys
 import inspect
 from os import environ as env
@@ -12,6 +13,12 @@ from keystoneauth1 import session
 private_net = None
 floating_ip_pool_name = None
 floating_ip = None
+cname=sys.argv[1]
+nname=sys.argv[2]
+iname=sys.argv[3]
+ename=sys.argv[4]
+kname=sys.argv[5]
+fname=sys.argv[6]
 
 loader = loading.get_plugin_loader('password')
 auth = loader.load_from_options(auth_url=env['OS_AUTH_URL'],
@@ -25,15 +32,15 @@ auth = loader.load_from_options(auth_url=env['OS_AUTH_URL'],
 sess = session.Session(auth=auth)
 nova = client.Client(2.1, session=sess)
 neutron = nclient.Client(session=sess)
-##Set input parameters
-user_data = open(os.getcwd()+'/cloudconfig.txt')  #Change the user_data file here
-image = nova.glance.find_image('Ubuntu 18.04 LTS (Bionic Beaver) - latest')
-flavor = nova.flavors.find(name="ssc.small")
-networks = neutron.list_networks(name='SNIC 2019/10-32 Internal IPv4 Network') #Change the network here
+master_data = open(os.getcwd()+'/'+cname)
+#image='Ubuntu 18.04 LTS (Bionic Beaver) - latest'
+image = nova.glance.find_image(ename)
+flavor = nova.flavors.find(name=fname)
+#name='SNIC 2019/10-13 Internal IPv4 Network'
+networks = neutron.list_networks(name=nname)
 network_id = networks['networks'][0]['id']
 nics = [{'net-id': network_id}]
-##Create the instance and boot with cloud-init configuration
-instance = nova.servers.create(name="grp14_master_vm", image=image.id, flavor=flavor, key_name="group14", userdata=user_data, nics=nics) #Change the instance and key name here
+instance = nova.servers.create(name=iname, image=image.id, flavor=flavor, key_name=kname, userdata=master_data, nics=nics) 
 # Poll at 5 second intervals, until the status is no longer 'BUILD'
 status = instance.status
 while status == 'BUILD':
