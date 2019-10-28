@@ -16,9 +16,47 @@ Verify
 
 > terraform -v
 
-### Set the OpenStack Environment Varibles
+### Set the OpenStack Environment Variables
 
 Log in to the OpenStack dashboard,Download the OpenStack RC file and save it.
 
 >source ./SNICopenrc.sh
 
+### Create the two Terraform Templates to the cluster.
+
+```
+providers.tf
+main.tf
+```
+providers.tf
+
+```
+#Terraform Proivders
+provider "openstack" {}
+```
+main.tf
+
+```
+#Specify resources details here
+
+resource "openstack_compute_keypair_v2" "my-cloud-key" {
+  name       = "accg14key"
+  public_key = "ssh-rsa AAAAB3NzaC1y....
+  }
+  resource "openstack_compute_instance_v2" "wrkr" {
+  name            = "wrkr-${count.index}"
+  image_name      = "Ubuntu 18.04 LTS (Bionic Beaver) - latest"
+  flavor_name     = "ssc.small"
+  key_pair        = "${openstack_compute_keypair_v2.my-cloud-key.name}"
+  security_groups = ["default"]
+  user_data       = "${file("worker.conf")}"
+  count           = 3  ***#Number of Workers to increase or decrease****
+
+  network {
+    name = "SNIC 2019/10-32 Internal IPv4 Network"
+  }
+}
+
+  ```
+  
+  
