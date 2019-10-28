@@ -1,4 +1,9 @@
-# This is where our implementation will be
+To use the Dockerfile as source, run (from the same location as the Dockerfile):
+
+    docker build . 
+OR
+
+    sudo docker build .
 
 ## Commmand Line to run the vm-launch-userdata.py
 
