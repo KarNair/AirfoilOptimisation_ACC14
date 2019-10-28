@@ -12,13 +12,15 @@ byobu_default: system
 
 runcmd:
  - pip3 install flask
- - pip3 install celery
+ - pip3 install numpy
+ - pip3 install "celery[librabbitmq]"
  - sudo apt install -y rabbitmq-server
  - sudo rabbitmqctl add_user acc14 accg14
  - sudo rabbitmqctl add_vhost g14host
  - sudo rabbitmqctl set_permissions -p g14host acc14 ".*" ".*" ".*"
  - sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+ - sudo apt-get update -y
  - sudo apt-cache policy docker-ce
  - sudo apt-get install -y docker-ce
  - sudo docker run -td -v $(pwd):/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:current
