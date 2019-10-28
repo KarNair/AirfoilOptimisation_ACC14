@@ -22,7 +22,7 @@ Log in to the OpenStack dashboard,Download the OpenStack RC file and save it.
 
 >source ./SNICopenrc.sh
 
-### Create the two Terraform Templates to the cluster.
+### Create the two Terraform Templates to setup the VM cluster.
 
 ```
 providers.tf
