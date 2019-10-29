@@ -16,11 +16,19 @@ Verify
 
 > terraform -v
 
-### Set the OpenStack Environment Variables
+### Install the OpenStack and set the Environment Variables
+
+> sudo apt  install python3-openstackclient
 
 Log in to the OpenStack dashboard,Download the OpenStack RC file and save it.
 
->source ./SNICopenrc.sh
+> source ./SNICopenrc.sh
+
+### Generate the Public Key 
+
+To Generate the Public key, we can use the private key which created in OpenStack Dashboard
+
+> ssh-keygen -y -f .ssh/group14.pem
 
 ### Create the two Terraform Templates to setup the VM cluster.
 
