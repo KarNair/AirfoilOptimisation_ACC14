@@ -66,5 +66,16 @@ resource "openstack_compute_keypair_v2" "my-cloud-key" {
 }
 
   ```
+  ### Cloud Infrastructure Launch and Cleaning Instructions
   
+  Run terraform apply, will generate the plan and launch the infrastructure as per the configuration given in the templates.
   
+  > terraform apply
+  
+  To clean up the resources.
+  
+  > terraform destroy
+  
+ NOTE: Run the plan to see the setup without launching the instance for reference.
+ 
+   > terraform plan
