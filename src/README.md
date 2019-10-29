@@ -1,9 +1,19 @@
 To use the Dockerfile as source, run (from the same location as the Dockerfile):
 
-    docker build . 
-OR
+    docker build .  //OR  sudo docker build .
 
-    sudo docker build .
+Once this completes it'll say something like:
+
+    Successfully built b7bec6991e53
+
+Then you start the container:
+    
+    docker run -d -it  --name=first b7bec6991e53
+    
+Lastly, to access and use it:
+    
+    docker exec -t -i b7bec6991e53 /bin/bash
+   
 
 Commmand Line to run the vm-launch-userdata.py
 
