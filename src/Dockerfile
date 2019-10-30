@@ -20,5 +20,5 @@ RUN cmake .
 RUN make -j 2
 
 WORKDIR /Airfoil/murtazo/cloudnaca
-RUN apt-get -y update
-RUN apt-get -y install gmsh python-numpy
+#RUN apt-get -y update
+#RUN apt-get -y install gmsh python-numpy
