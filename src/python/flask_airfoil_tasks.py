@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/airfoil/api/base',methods=['GET'])
 def tasks():
-        data= request.args.get('input','1,0.0001,10.,0.1')
+        data= request.args.get('input','1,0.0001,1.,0.1')
         files= request.args.get('xmls','1')
         vars_split= data.split(",")
         if len(vars_split)==4:
@@ -24,7 +24,7 @@ def tasks():
                 
                 words=mapper.delay(air_vars)
         else:
-                words=mapper.delay('1,0.0001,10.,0.1'.split(","))
+                words=mapper.delay('1,0.0001,1.,0.1'.split(","))
         #words=mapper.delay(air_vars)
 
 
@@ -34,7 +34,7 @@ def tasks():
         #print(words.get())
         
         error=words.get()
-        success_msg="The computation is done. Contact admin to get the results."
+        success_msg="The computation is done. Contact admin to get the results. "
         return success_msg #words.get()
 
 #tasks = app.register_task(tasks())
