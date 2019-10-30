@@ -5,7 +5,7 @@ import json
 #app = Flask(__name__)
 #app = Celery('tasks', backend='rpc://', broker='pyamqp://guest@localhost//')
 #app.config_from_object('celeryconfig')
-app = Celery('tasks', backend='rpc://', broker='pyamqp://acc14:accg14@localhost:5672/g14host')
+app = Celery('tasks', backend='rpc://', broker='pyamqp://myuser:mypassword@localhost:5672/myvhost')
 
 
 @app.task(trail=True)
