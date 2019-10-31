@@ -6,7 +6,7 @@ WORKDIR /home/fenics/Airfoil
 RUN git clone https://github.com/KarNair/AirfoilOptimisation_ACC14.git
 #COPY /AirfoilOptimisation_ACC14/project_description/murtazo.tgz /Airfoil/murtazo.tgz
 #COPY /AirfoilOptimisation_ACC14/project_description/murtazo/cloudnaca  /Airfoil/murtazo/cloudnaca
-y#COPY /AirfoilOptimisation_ACC14/project_description/murtazo/navier_stokes_solver  /Airfoil/murtazo/navier_stokes_sol$
+#COPY /AirfoilOptimisation_ACC14/project_description/murtazo/navier_stokes_solver  /Airfoil/murtazo/navier_stokes_sol$
 #RUN apt-get -y update
 
 #RUN apt-get -y upgrade
