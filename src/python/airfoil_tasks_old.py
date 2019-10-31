@@ -1,4 +1,4 @@
-#air_tasks.py
+#tasks.py
 from celery import Celery, group
 import json
 
@@ -23,7 +23,7 @@ def mapper(arguments):
         dockerID = dockerID.decode("utf-8"). replace('"','')
         print("dockerID decoded  ", dockerID)
 
-        bashCommand = "docker exec -w /home/fenics/Airfoil/murtazo/navier_stokes_solver/ " +dockerID.strip()  + " ./airfoil "+ str1+  " ../../AirfoilOptimisation_ACC14/project_description/murtazo/cloudnaca/msh/r1a9n200.xml"
+        bashCommand = "docker exec -w /home/fenics/shared/murtazo/navier_stokes_solver/ " +dockerID.strip()  + " ./airfoil "+ str1+  " ../cloudnaca/msh/r1a9n200.xml"
         print(bashCommand)
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
@@ -38,7 +38,7 @@ def mapper(arguments):
         processMkdir = subprocess.Popen(bashCommandMKDIR.split(), stdout=subprocess.PIPE)
         output, error = processMkdir.communicate()
         print("dockerID  before CP", dockerID)
-        bashCommandCP = "docker cp " + dockerID.strip()+ ":/home/fenics/Airfoil/murtazo/navier_stokes_solver/results/  " + dirname
+        bashCommandCP = "docker cp " + dockerID.strip()+ ":/home/fenics/shared/murtazo/navier_stokes_solver/results/  " + dirname
         print(bashCommandCP)
         processCP = subprocess.Popen(bashCommandCP.split(), stdout=subprocess.PIPE)
         output, error = processCP.communicate()
