@@ -3,6 +3,15 @@ FROM quay.io/fenicsproject/stable:current
 USER root
 RUN mkdir Airfoil
 WORKDIR Airfoil
+
+RUN git config --unset http.proxy
+RUN git config --global --unset http.proxy
+RUN git config --system --unset http.proxy
+
+RUN git config --unset https.proxy
+RUN git config --global --unset https.proxy
+RUN git config --system --unset https.proxy
+
 RUN git clone https://github.com/KarNair/AirfoilOptimisation_ACC14.git
 COPY /AirfoilOptimisation_ACC14/project_description/murtazo.tgz /Airfoil/murtazo.tgz
 COPY /AirfoilOptimisation_ACC14/project_description/murtazo/cloudnaca  /Airfoil/murtazo/cloudnaca
