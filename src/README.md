@@ -10,9 +10,9 @@ Then you start the container:
     
     docker run -d -it  --name=first b7bec6991e53
     
-Lastly, to access and use it:
+Lastly, do docker ps to get container ID, and use it:
     
-    docker exec -t -i b7bec6991e53 /bin/bash
+    docker exec -t -i ajkdbe1e53 /bin/bash
    
 
 Commmand Line to run the vm-launch-userdata.py
