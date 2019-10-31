@@ -1,6 +1,6 @@
 resource "openstack_compute_keypair_v2" "my-cloud-key" {
   name       = "grp14key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEyR8OwjwtjLTJzs8jRPVpoHJ1RcDXYaYgHSurX3MPO5lh+wCwy1fPyoOPagRglZUe11MMflD/s6YIjmjHXWto/I7nIIb+EtiF5RLFtsiVYU1kNP2lDaBImKvl8M4AwoWGv+dUZGCx71oZjmZCjShXi$
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEyR8OwjwtjLTJzs8jRPVpoHJ1RcDXYaYgHSurX3MPO5lh+wCwy1fPyoOPagRglZUe11MMflD/s6YIjmjHXWto/I7nIIb+EtiF5RLFtsiVYU1kNP2lDaBImKvl8M4AwoWGv+dUZGCx71oZjmZCjShXi8X21xUxX6qAflhTksMFjDJe2+mCfyhYPuwgxV/6vagjhR1B5gn5dmvLULvXXzPzSXwVoaaF+hz/Yclez/RgOFGnpLvjj2smC1mwAibb6q3TxBKjCsi9rLJysPKeqnK1WfQzt5Nndd6VYe2H92TsBhkCXenJwKSVOByNiXk7ZX1EX2CbEGGDyICRLxOXbQ5/"
 }
 resource "openstack_compute_instance_v2" "master" {
   name            = "Group14_master-vm"
