@@ -11,6 +11,13 @@ statically configured input (apart from the meshes) and
 there needs to be an assessment of the horizontally
 scalability of your solution.
 
+## Tools Used
+ * Terraform
+ * Docker
+
+
+
+
 # Input
 
 API Interface Request from Users to send the different input parameters.
@@ -18,3 +25,5 @@ API Interface Request from Users to send the different input parameters.
 # Ouput
 
 Standard Response Message "Computation Completed" Contact admin for Results. 
+
+
