@@ -14,8 +14,8 @@ scalability of your solution.
 ## Tools Used
  * Terraform
  * Docker
-
-
+ * Flask
+ * Celery
 
 
 # Input
