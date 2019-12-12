@@ -16,6 +16,8 @@ scalability of your solution.
  * Docker
  * Flask
  * Celery
+ * RabbitMQ
+ 
 
 
 # Input
